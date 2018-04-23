@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"
+            integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ"
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="action.js" defer></script>
+</head>
+<body>
+
+    <div class="header">
+        <select onchange="getCourse(this.value)" id="courseselect">
+            <option>Select Course</option>
+        </select>
+        <select onchange="setTee(this.value)" id="teeselect">
+            <option>Select Tee</option>
+        </select>
+        <p id="playertitle">Number of Players:</p>
+        <input placeholder="#" id="numplayers" type="number" onchange="getPlayers(this.value)">
+    </div>
+
+    <div  class="card">
+        <div class="left">
+            <div class="pheader">Players</div>
+            <div class="names"></div>
+        </div>
+
+        <div class="right">
+
+        </div>
+    </div>
+
+</body>
+</html>
