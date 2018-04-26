@@ -27,7 +27,6 @@
 }
 .card .right {
   display: flex;
-  justify-content: center;
 }
 .card .right .column {
   width: auto;
@@ -43,4 +42,8 @@
 }
 .card .right .column .holeinput {
   height: 14px;
+}
+.card .right .column .yards {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
 }

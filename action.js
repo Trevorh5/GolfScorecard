@@ -1,9 +1,12 @@
 let golfholes = [];
-let numplayers = 2;
+let numplayers = 0;
 let allcourses;
 let selTee;
 let selcourse;
-loadDoc();
+let holes = 18;
+let maxplayers = 4;
+
+
 
 function loadDoc() {
     var xhttp = new XMLHttpRequest();
@@ -21,14 +24,20 @@ function loadDoc() {
     xhttp.send();
 }
 
-function getPlayers(val) {
-        numplayers = val;
-        fillCard();
+function getPlayers(){
+
+    if(numplayers < 4) {
+        numplayers++;
+    }else{
+        $('#maxPlayers').text('Max 4 Players');
+    }
+
+    fillCard();
+
 }
 
 
 function getCourse(id){
-    console.log(id);
     $('#teeselect').html('');
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -53,22 +62,41 @@ function setTee(teeindex){
     for(let i = 0; i < mycourse.length; i++){
         $('.right').append("<div class='column' id='c"+ i +"'>"+
             "<div class='cheader'>"+ (i+1) +"</div>" +
+            "<div class='hcp'>HDCP:" + selcourse.data.holes[i].teeBoxes[selTee].hcp + "</div>" +
             "<div class='yards'>" + selcourse.data.holes[i].teeBoxes[selTee].yards + " yds</div>" +
-            "<div class='hcp'>HCP:" + selcourse.data.holes[i].teeBoxes[selTee].hcp + "</div>" +
             "<div class='scoreboxes'></div>" +
             "</div>");
     }
-    //fillCard();
+    
+
 }
+//rows are horizontal
+
 
 function fillCard(){
     $(".names").text('');
     $(".scoreboxes").html('');
     for(let p = 1; p <= numplayers; p++){
         $('.names').append("<div contenteditable='true' class='playerlabel'> player "+ p +"</div>");
+
         $('.holeinput').val('');
         for(let h = 0; h < selcourse.data.holes.length; h++){
-            $("#c" + h).children('.scoreboxes').append("<input class='holeinput' id='p"+ p + "h" + h + "' type='text'>");
+            $("#c" + h).children('.scoreboxes').append("<input onkeyup='calcScore(" + p + ")' class='holeinput' id='p"+ p + "h" + h + "' type='number'>");
         }
     }
+    //getTotalColumns();
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+}
+
+function getTotalColumns(){
+
+}
+
+function calcScore(playerNum){
+    let totalScore;
+    for(let t = 1; t <= holes; t++){
+        totalScore = $("p" + playerNum + "h" + t).val();
+    }
+
+
 }

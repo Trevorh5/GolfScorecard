@@ -10,7 +10,7 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="action.js" defer></script>
 </head>
-<body>
+<body onload="loadDoc()">
 
     <div class="header">
         <select onchange="getCourse(this.value)" id="courseselect">
@@ -19,8 +19,7 @@
         <select onchange="setTee(this.value)" id="teeselect">
             <option>Select Tee</option>
         </select>
-        <p id="playertitle">Number of Players:</p>
-        <input placeholder="#" id="numplayers" type="number" onchange="getPlayers(this.value)">
+        <button class="addPlayerBtn" onclick="getPlayers()">Add Player</button><span id="maxPlayers"></span>
     </div>
 
     <div  class="card">
