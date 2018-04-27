@@ -16,15 +16,23 @@
         <select onchange="getCourse(this.value)" id="courseselect">
             <option>Select Course</option>
         </select>
-        <select onchange="setTee(this.value)" id="teeselect">
+        <select onchange="buildCard(this.value)" id="teeselect">
             <option>Select Tee</option>
         </select>
-        <button class="addPlayerBtn" onclick="getPlayers()">Add Player</button><span id="maxPlayers"></span>
+        <button class="addPlayerBtn" onclick="addPlayer()">Add Player</button><span id="maxPlayers" hidden="hidden">Max 4 Players</span>
+        <div class="scored"></div>
     </div>
 
     <div  class="card">
         <div class="left">
-            <div class="pheader">Players</div>
+            <div class="pheader">
+                <div class="title">Holes</div>
+                <div class="title">Handicaps</div>
+                <div class="title">Yards</div>
+                <div class="title">Par</div>
+            </div>
+
+
             <div class="names"></div>
         </div>
 

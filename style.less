@@ -1,55 +1,141 @@
-.header{
-  display: flex;
-  #playertitle{
-    margin: 0 8px 0;
-    height: 15px;
-  }
-  #numplayers {
-    width: 35px;
-    height: 15px;
-  }
-}
-.card{
-  height: auto;
+@myborder : 2px solid black;
 
-  display: flex;
-  .left{
+
+body, html {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  background-image: url("golfBackground.jpg");
+
+
+  .header{
     display: flex;
-    flex-direction: column;
-    justify-content: end;
+    margin: 8px;
 
-    .pheader{
-      height: 61px;
+    #playertitle {
+      margin: 0 8px 0;
+      height: 15px;
     }
-    .playerlabel{
-      border: 1px solid black;
-      width: 55px;
+    #numplayers {
+      width: 35px;
+      height: 15px;
     }
   }
-  .right{
+  .card {
+    height: auto;
     display: flex;
-    //justify-content: center;
-    .column{
-      width: auto;
-      height: 65;
-      border: 1px solid black;
+    margin: 10px;
+    .left {
       display: flex;
-      padding: 4px 4px 0 4px;
       flex-direction: column;
-      align-items: center;
+      justify-content: end;
+      width: 90px;
 
-      .cheader{
-        padding-bottom: 2px;
-      }
-      .holeinput{
-       height: 14px;
-      }
-      .yards{
-        border-top: 1px solid;
-        border-bottom: 1px solid;
+      .pheader {
+        height: 108px;
+        border: 1px solid black;
+        //padding: 0 4px;
+
+        .title{
+          border-bottom: @myborder;
+          height: 25px;
+          padding: 0 auto;
+        }
 
       }
+
+      .names {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        .playerlabel {
+          border: 2px solid black;
+          width: auto;
+        }
+      }
+    }
+    .right {
+      display: flex;
+      justify-content: space-evenly;
+      //justify-content: center;
+      .column {
+        height: auto;
+        width: auto;
+        border: 1px solid black;
+        display: flex;
+        flex: 1;
+        //padding: 0 4px;
+        flex-direction: column;
+        align-items: center;
+        .cheader {
+          padding: inherit;
+          width: auto;
+          border-bottom: @myborder;
+          height: 25px;
+        }
+        .hcp {
+          padding: 0 auto;
+          border-bottom: @myborder;
+          height: 25px;
+        }
+        .yards {
+          padding: 0 auto;
+          border-bottom: @myborder;
+          height: 25px;
+          width: auto;
+        }
+        .pars{
+          padding: 0 auto;
+          border-bottom: @myborder;
+          height: 25px;
+
+        }
+
+        .scoreboxes{
+          display: flex;
+          flex-direction: column;
+
+          .holeinput{
+            height: 14px;
+            width: 25px;
+          }
+        }
+      }
+      #totalsCol{
+        height: auto;
+        width: auto;
+        border: 1px solid black;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+
+          .theader{
+            padding-left: auto;
+            padding-right: auto;
+            border-bottom: @myborder;
+            height: 25px
+          }
+
+          .empty{
+            padding: 0 auto;
+            border-bottom: @myborder;
+            height: 25px
+          }
+
+          .totYards{
+            padding: 0 auto;
+            border-bottom: @myborder;
+            height: 25px
+          }
+
+          .totPar{
+            padding: 0 auto;
+            border-bottom: @myborder;
+            height: 25px
+          }
+        }
+
     }
   }
 }
-
