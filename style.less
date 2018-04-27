@@ -6,12 +6,13 @@ body, html {
   height: 100%;
   padding: 0;
   background-image: url("golfBackground.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 
 
   .header{
     display: flex;
     margin: 8px;
-
     #playertitle {
       margin: 0 8px 0;
       height: 15px;
@@ -25,6 +26,11 @@ body, html {
     height: auto;
     display: flex;
     margin: 10px;
+    .scoreRow{
+      height: 25px;
+      margin: 1px auto;
+      border: 1px solid black;
+    }
     .left {
       display: flex;
       flex-direction: column;
@@ -46,11 +52,12 @@ body, html {
 
       .names {
         display: flex;
+        flex: 1;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: baseline;
 
         .playerlabel {
-          border: 2px solid black;
+          border: 1px solid black;
           width: auto;
         }
       }
@@ -59,6 +66,11 @@ body, html {
       display: flex;
       justify-content: space-evenly;
       //justify-content: center;
+      .swingspot{
+        height: 25px;
+        width: auto;
+        border: 1px solid;
+      }
       .column {
         height: auto;
         width: auto;
@@ -69,8 +81,10 @@ body, html {
         flex-direction: column;
         align-items: center;
         .cheader {
-          padding: inherit;
-          width: auto;
+          display: flex;
+          justify-content: center;
+          padding: 0 20px 0 20px;
+          width: 30px;
           border-bottom: @myborder;
           height: 25px;
         }
@@ -99,10 +113,11 @@ body, html {
           .holeinput{
             height: 14px;
             width: 25px;
+
           }
         }
       }
-      #totalsCol{
+      .totalsCol{
         height: auto;
         width: auto;
         border: 1px solid black;
@@ -138,4 +153,9 @@ body, html {
 
     }
   }
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

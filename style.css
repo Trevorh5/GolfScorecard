@@ -4,6 +4,8 @@ html {
   height: 100%;
   padding: 0;
   background-image: url("golfBackground.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 body .header,
 html .header {
@@ -26,6 +28,12 @@ html .card {
   display: flex;
   margin: 10px;
 }
+body .card .scoreRow,
+html .card .scoreRow {
+  height: 25px;
+  margin: 1px auto;
+  border: 1px solid black;
+}
 body .card .left,
 html .card .left {
   display: flex;
@@ -47,18 +55,25 @@ html .card .left .pheader .title {
 body .card .left .names,
 html .card .left .names {
   display: flex;
+  flex: 1;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: baseline;
 }
 body .card .left .names .playerlabel,
 html .card .left .names .playerlabel {
-  border: 2px solid black;
+  border: 1px solid black;
   width: auto;
 }
 body .card .right,
 html .card .right {
   display: flex;
   justify-content: space-evenly;
+}
+body .card .right .swingspot,
+html .card .right .swingspot {
+  height: 25px;
+  width: auto;
+  border: 1px solid;
 }
 body .card .right .column,
 html .card .right .column {
@@ -72,8 +87,10 @@ html .card .right .column {
 }
 body .card .right .column .cheader,
 html .card .right .column .cheader {
-  padding: inherit;
-  width: auto;
+  display: flex;
+  justify-content: center;
+  padding: 0 20px 0 20px;
+  width: 30px;
   border-bottom: 2px solid black;
   height: 25px;
 }
@@ -106,8 +123,8 @@ html .card .right .column .scoreboxes .holeinput {
   height: 14px;
   width: 25px;
 }
-body .card .right #totalsCol,
-html .card .right #totalsCol {
+body .card .right .totalsCol,
+html .card .right .totalsCol {
   height: auto;
   width: auto;
   border: 1px solid black;
@@ -115,28 +132,33 @@ html .card .right #totalsCol {
   flex: 1;
   flex-direction: column;
 }
-body .card .right #totalsCol .theader,
-html .card .right #totalsCol .theader {
+body .card .right .totalsCol .theader,
+html .card .right .totalsCol .theader {
   padding-left: auto;
   padding-right: auto;
   border-bottom: 2px solid black;
   height: 25px;
 }
-body .card .right #totalsCol .empty,
-html .card .right #totalsCol .empty {
+body .card .right .totalsCol .empty,
+html .card .right .totalsCol .empty {
   padding: 0 auto;
   border-bottom: 2px solid black;
   height: 25px;
 }
-body .card .right #totalsCol .totYards,
-html .card .right #totalsCol .totYards {
+body .card .right .totalsCol .totYards,
+html .card .right .totalsCol .totYards {
   padding: 0 auto;
   border-bottom: 2px solid black;
   height: 25px;
 }
-body .card .right #totalsCol .totPar,
-html .card .right #totalsCol .totPar {
+body .card .right .totalsCol .totPar,
+html .card .right .totalsCol .totPar {
   padding: 0 auto;
   border-bottom: 2px solid black;
   height: 25px;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
