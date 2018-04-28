@@ -86,33 +86,14 @@ html .card .right .column {
   flex-direction: column;
   align-items: center;
 }
-body .card .right .column .cheader,
-html .card .right .column .cheader {
+body .card .right .column .holecol,
+html .card .right .column .holecol {
+  width: 30px;
+  padding: 0 10px;
   display: flex;
   justify-content: center;
-  padding: 0 10px 0;
-  width: 30px;
-  border-bottom: 2px solid black;
   height: 25px;
-}
-body .card .right .column .hcp,
-html .card .right .column .hcp {
-  padding: 0 auto;
   border-bottom: 2px solid black;
-  height: 25px;
-}
-body .card .right .column .yards,
-html .card .right .column .yards {
-  padding: 0 auto;
-  border-bottom: 2px solid black;
-  height: 25px;
-  width: auto;
-}
-body .card .right .column .pars,
-html .card .right .column .pars {
-  padding: 0 auto;
-  border-bottom: 2px solid black;
-  height: 25px;
 }
 body .card .right .column .scoreboxes,
 html .card .right .column .scoreboxes {
