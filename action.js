@@ -6,7 +6,6 @@ let selcourse;
 let holes = 18;
 
 
-
 function loadDoc() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -53,18 +52,21 @@ function buildCard(teeindex){
     selTee = teeindex;
     let inpar = 0;
     let inyards = 0;
+    let inscore = 0;
 
     let outpar = 0;
     let outyards = 0;
+    let outscore = 0;
 
     let totalpar = 0;
     let totalyards = 0;
+    let totalscore = 0;
 
     let inScoreCol;
     let outScoreCol;
     let totalScoreCol;
 
-    let scoreRow;
+    let curHole;
 
     for(i = 0; i < 9; i++){
         inpar += selcourse.data.holes[i].teeBoxes[teeindex].par;
@@ -78,12 +80,11 @@ function buildCard(teeindex){
     }
 
     for(t = 0; t < selcourse.data.holes.length; t++){
-
         totalpar += selcourse.data.holes[t].teeBoxes[selTee].par;
         totalyards += selcourse.data.holes[t].teeBoxes[selTee].yards;
     }
 
-    for(let i = 0; i < selcourse.data.holes.length; i++) {
+    for(let i = 0; i < selcourse.data.holes.length; i++){
         $('.right').append("<div class='column' id='c" + i + "'>" +
             "<div class='cheader'>" + (i + 1) + "</div>" +
             "<div class='hcp'>" + selcourse.data.holes[i].teeBoxes[selTee].hcp + "</div>" +
@@ -101,6 +102,7 @@ function buildCard(teeindex){
             "<div class='empty'></div>" +
             "<div class='totYards'>" + inyards + "</div>" +
             "<div class='totPar'>" + inpar + "</div>" +
+            "<div class='scoreinfo' id='inScoreInfo'></div>" +
             "</div>";
 
         outScoreCol = "<div class='totalsCol' id='outScore'>" +
@@ -108,6 +110,7 @@ function buildCard(teeindex){
             "<div class='empty'></div>" +
             "<div class='totYards'>" + outyards + "</div>" +
             "<div class='totPar'>" + outpar + "</div>" +
+            "<div class='scoreinfo' id='outScoreInfo'></div>" +
             "</div>";
 
 
@@ -116,11 +119,16 @@ function buildCard(teeindex){
             "<div class='empty'></div>" +
             "<div class='totYards'>" + totalyards + "</div>" +
             "<div class='totPar'>" + totalpar + "</div>" +
+            "<div class='scoreinfo' id='scoreInfo'></div>" +
             "</div>";
 
     $('.right').append(inScoreCol + outScoreCol + totalScoreCol);
 
 
+}
+
+function something(){
+    //call $("#totP" + var + "inscore")
 }
 //rows are horizontal
 function addPlayer(){
@@ -137,25 +145,25 @@ function addPlayer(){
 
 function fillCard(){
     $(".names").text('');
+    $('.scoreinfo').html('')
     $(".scoreboxes").html('');
     for(let p = 1; p <= numplayers; p++){
         $('.names').append("<div contenteditable='true' class='playerlabel' id='playlabel" + p + "'> Player "+ p +
             "<span id='deletePlayer' class='far fa-trash-alt' onclick='removePlayer(" + p + ")'></span> </div>" +
             "<div class='scoreRow' id='p" + p + "scoreRow'>Score: </div>");
 
-        $("#inScore").append("<div class='swingspot score" + p + "' id='p" + p + "inscore'></div>" +
+        $("#inScoreInfo").append("<div class='swingspot score" + p + "' id='p" + p + "inscore'></div>" +
             "<div class='scoreRow SRTotal' id='totP" + p + "inscore'></div>");
 
-        $("#outScore").append("<div class='swingspot score" + p + "' id='p" + p + "outscore'></div>" +
+        $("#outScoreInfo").append("<div class='swingspot score" + p + "' id='p" + p + "outscore'></div>" +
             "<div class='scoreRow SRTotal' id='totP" + p + "outscore'></div>");
 
-        $("#totes").append("<div class='swingspot score" + p + "' id='p" + p + "score'></div>" +
+        $("#scoreInfo").append("<div class='swingspot score" + p + "' id='p" + p + "score'></div>" +
             "<div class='scoreRow SRTotal' id='totP" + p + "score'></div>");
 
         $('.holeinput').val('');
-        
         for(let h = 0; h < selcourse.data.holes.length; h++){
-            $("#c" + h).children('.scoreboxes').append("<input onkeyup='getPar(" + p + ")' class='holeinput' id='p"+ p + "h" + h + "' type='number'>" +
+            $("#c" + h).children('.scoreboxes').append("<input onkeyup='getPar(" + p + ","+ h + ")' class='holeinput' id='p"+ p + "h" + h + "' type='number'>" +
                 "<div class='scoreRow play" + p + "hole" + h + "score'></div>");
 
         }
@@ -163,37 +171,47 @@ function fillCard(){
 }
 
 
-function getPar(player){
+function getPar(player, hole){
+
     let inscore = 0;
+    let inCalcscore = 0;
     let outscore = 0;
+    let outCalcscore = 0;
     let score = 0;
+    let calcScore = 0;
 
     for(let i = 0; i < 9; i++){
         inscore += Number($("#p" + player + "h" + i).val());
+        inCalcscore += (Number($("#p" + player + "h" + i).val()) - selcourse.data.holes[i].teeBoxes[selTee].par);
     }
 
-    for(let j = 9; j < 18; j++){
-        outscore += Number($("#p" + player + "h" + j).val());
-
+    for(let i = 9; i < 18; i++){
+        outscore += Number($("#p" + player + "h" + i).val());
+        outCalcscore += (Number($("#p" + player + "h" + i).val()) - selcourse.data.holes[i].teeBoxes[selTee].par);
     }
 
-    for (let s = 0; s < holes; s++){
-        score += Number($("#p" + player + "h" + s).val());
+    for (let i = 0; i < holes; i++){
+        score += Number($("#p" + player + "h" + i).val());
+        calcScore += (Number($("#p" + player + "h" + i).val()) - selcourse.data.holes[i].teeBoxes[selTee].par);
+
     }
 
 
     $('#p' + player + "inscore").text(inscore);
+    $("#totP" + player + "inscore").text(inCalcscore);
+
     $('#p' + player + "outscore").text(outscore);
+    $("#totP" + player + "outscore").text(inCalcscore);
+
     $('#p' + player + "score").text(score);
-    perHolePar(player);
-}
+    $("#totP" + player + "score").text(inCalcscore);
 
-function perHolePar(player){
-    let currentPar;
-
+    $(".play" + player + "hole" + hole + "score").text(Number($("#p" + player + "h" + hole).val()) - selcourse.data.holes[hole].teeBoxes[selTee].par);
 
 
 }
+
+
 
 function removePlayer(id){
     $("#playlabel" + id).remove();

@@ -31,7 +31,7 @@ html .card {
 body .card .scoreRow,
 html .card .scoreRow {
   height: 25px;
-  margin: 1px auto;
+  padding: 0 auto;
   border: 1px solid black;
 }
 body .card .left,
@@ -63,6 +63,7 @@ body .card .left .names .playerlabel,
 html .card .left .names .playerlabel {
   border: 1px solid black;
   width: auto;
+  height: 25px;
 }
 body .card .right,
 html .card .right {
@@ -89,7 +90,7 @@ body .card .right .column .cheader,
 html .card .right .column .cheader {
   display: flex;
   justify-content: center;
-  padding: 0 20px 0 20px;
+  padding: 0 10px 0;
   width: 30px;
   border-bottom: 2px solid black;
   height: 25px;
@@ -120,7 +121,7 @@ html .card .right .column .scoreboxes {
 }
 body .card .right .column .scoreboxes .holeinput,
 html .card .right .column .scoreboxes .holeinput {
-  height: 14px;
+  height: 21px;
   width: 25px;
 }
 body .card .right .totalsCol,
