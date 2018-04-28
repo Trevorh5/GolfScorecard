@@ -125,7 +125,7 @@ function addPlayer(){
     fillCard();
 
 }
-//fills out the player section of the card plus the score
+//fills out the player section of the card
 function fillCard(){
     $(".names").text('');
     $('.scoreinfo').html('');
@@ -135,8 +135,8 @@ function fillCard(){
             "<span id='deletePlayer' class='far fa-trash-alt' onclick='removePlayer(" + p + ")'></span> </div>" +
             "<div class='scoreRow' id='p" + p + "scoreRow'>Score: </div>");
 
-        $("#inScoreInfo").append("<div class='swingspot score" + p + "' id='p" + p + "inscore'></div>" +
-            "<div class='scoreRow' id='totP" + p + "inscore'></div>");
+        $("#inScoreInfo").append("<div class='holecol swingspot score" + p + "' id='p" + p + "inscore'></div>" +
+            "<div class='holecol scoreRow' id='totP" + p + "inscore'></div>");
 
         $("#outScoreInfo").append("<div class='swingspot score" + p + "' id='p" + p + "outscore'></div>" +
             "<div class='scoreRow' id='totP" + p + "outscore'></div>");
@@ -146,7 +146,7 @@ function fillCard(){
 
         $('.holeinput').val('');
         for(let h = 0; h < selcourse.data.holes.length; h++){
-            $("#c" + h).children('.scoreboxes').append("<input onkeyup='getPar(" + p + ","+ h + ")' class='holeinput' id='p"+ p + "h" + h + "' type='number'>" +
+            $("#c" + h).children('.scoreboxes').append("<input onkeyup='getPar(" + p + ","+ h + ")' class='holecol holeinput' id='p"+ p + "h" + h + "' type='number'>" +
                 "<div class='scoreRow play" + p + "hole" + h + "score'></div>");
 
         }

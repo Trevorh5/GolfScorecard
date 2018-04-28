@@ -102,8 +102,9 @@ html .card .right .column .scoreboxes {
 }
 body .card .right .column .scoreboxes .holeinput,
 html .card .right .column .scoreboxes .holeinput {
-  height: 21px;
+  height: 23px;
   width: 25px;
+  padding: 0 10px;
 }
 body .card .right .totalsCol,
 html .card .right .totalsCol {
