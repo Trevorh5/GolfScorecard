@@ -114,6 +114,7 @@ function buildCard(teeindex){
 
 }
 
+//checks to make sure there are 4 players or less, if so it just increments the numplayers and calls fillCard again.
 function addPlayer(){
 
     if(numplayers < 4) {
@@ -125,14 +126,16 @@ function addPlayer(){
     fillCard();
 
 }
-//fills out the player section of the card
+
+//fills out the player section of the card based off of numplayers
 function fillCard(){
     $(".names").text('');
     $('.scoreinfo').html('');
     $(".scoreboxes").html('');
     for(let p = 1; p <= numplayers; p++){
-        $('.names').append("<div contenteditable='true' class='playerlabel' id='playlabel" + p + "'> Player "+ p +
-            "<span id='deletePlayer' class='far fa-trash-alt' onclick='removePlayer(" + p + ")'></span> </div>" +
+        $('.names').append("<div class='playerlabel' id='playlabel" + p + "'>" +
+            "<span contenteditable='true' class='player' >Player "+ p +"</span>" +
+            "<span class='far fa-trash-alt deletePlayer' onclick='removePlayer(" + p + ")'></span> </div>" +
             "<div class='scoreRow' id='p" + p + "scoreRow'>Score: </div>");
 
         $("#inScoreInfo").append("<div class='holecol swingspot score" + p + "' id='p" + p + "inscore'></div>" +
@@ -190,6 +193,7 @@ function getPar(player, hole){
 
     $(".play" + player + "hole" + hole + "score").text(Number($("#p" + player + "h" + hole).val()) - selcourse.data.holes[hole].teeBoxes[selTee].par);
 
+    $('#maxPlayers').hide();
 }
 
 function removePlayer(id){

@@ -35,7 +35,7 @@ body, html {
       display: flex;
       flex-direction: column;
       justify-content: end;
-      width: 90px;
+      width: auto;
 
       .pheader {
         height: 108px;
@@ -51,14 +51,19 @@ body, html {
 
       .names {
         display: flex;
+        position: relative;
         flex: 1;
         flex-direction: column;
-        justify-content: baseline;
+        align-items: stretch;
 
         .playerlabel {
           border: 1px solid black;
-          width: auto;
+          width: inherit;
           height: 25px;
+        }
+        .deletePlayer{
+
+          right: 7px;
         }
       }
     }

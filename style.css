@@ -39,7 +39,7 @@ html .card .left {
   display: flex;
   flex-direction: column;
   justify-content: end;
-  width: 90px;
+  width: auto;
 }
 body .card .left .pheader,
 html .card .left .pheader {
@@ -55,15 +55,20 @@ html .card .left .pheader .title {
 body .card .left .names,
 html .card .left .names {
   display: flex;
+  position: relative;
   flex: 1;
   flex-direction: column;
-  justify-content: baseline;
+  align-items: stretch;
 }
 body .card .left .names .playerlabel,
 html .card .left .names .playerlabel {
   border: 1px solid black;
-  width: auto;
+  width: inherit;
   height: 25px;
+}
+body .card .left .names .deletePlayer,
+html .card .left .names .deletePlayer {
+  right: 7px;
 }
 body .card .right,
 html .card .right {
